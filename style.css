@@ -1,0 +1,48 @@
+*{
+    margin:0;
+    padding: 0;
+}
+body{
+    background-color: #548687;
+    text-align: center;
+}
+.container {
+    height: 70vh; /*gave 70 percent of the web page portion to the container*/
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.game{
+    height: 60vmin; /*gave 60 percent of the  portion to the game where viewport is minimum*/
+    width: 60vmin;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vmin; /*creates gap between the boxes*/
+}
+.box{
+    height:18vmin;
+    width:18vmin;
+    border-radius: 4vmin;
+    border:none;
+    font-size: 13vmin;
+    color: #b0413e;
+} 
+.reset{
+    padding: 1vmin;
+    font-size: 1.25vmin;
+    background-color: #191913;
+    color: #fff;
+    border-radius: 1vmin;
+}
+.msg-container{
+    height: 10vmin;
+}
+.win{
+    font-size: 5vmin;
+}
+.hide{
+    display: none;
+}
