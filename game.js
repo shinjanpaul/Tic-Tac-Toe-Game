@@ -2,8 +2,7 @@ let boxes = document.querySelectorAll(".box");
 let resetBtn = document.querySelector(".reset");
 let msgcontn = document.querySelector(".msg-container");
 let msg = document.querySelector(".win");
-let turnO = true; // playerO's turn initially
-let gameOver = false; // To track if the game is over
+let turnO = true; 
 
 const winPatterns = [
     [0, 1, 2],
@@ -16,56 +15,50 @@ const winPatterns = [
     [6, 7, 8],
 ];
 
-// Add event listeners to each box
 boxes.forEach((box) => {
     box.addEventListener("click", () => {
-        // Check if the game is over or the box is already filled
-        if (!gameOver && box.innerText === "") {
+        if (box.innerText === "") {
             if (turnO) {
-                box.innerText = "O"; // Assign 'O' to the box
-                turnO = false; // Switch turn to 'X'
+                box.innerText = "O";
+                turnO = false; 
             } else {
-                box.innerText = "X"; // Assign 'X' to the box
-                turnO = true; // Switch turn to 'O'
+                box.innerText = "X";
+                turnO = true; 
             }
-            checkWinner(); // Check if there is a winner after the move
+            checkWinner();
         }
     });
 });
 
-// Check for a winner
+
 const checkWinner = () => {
     for (let pattern of winPatterns) {
         const [a, b, c] = pattern;
         if (
-            boxes[a].innerText !== "" && // Check whether the first box is not empty
-            boxes[a].innerText === boxes[b].innerText && // Compare the first and second box
-            boxes[a].innerText === boxes[c].innerText // Compare the first and third box
+            boxes[a].innerText !== "" && 
+            boxes[a].innerText === boxes[b].innerText &&
+            boxes[a].innerText === boxes[c].innerText
         ) {
             console.log(`Player ${boxes[a].innerText} wins!`);
-            showWinner(boxes[a].innerText); // Pass the winner to the showWinner function
-            gameOver = true; // Mark the game as over
+            showWinner(boxes[a].innerText);
             return;
         }
     }
 };
 
-// Show the winner
 const showWinner = (winner) => {
-    msgcontn.style.display = "block"; // Make the message container visible
-    msg.innerText = `Player ${winner} wins!`; // Display the winner
+    msgcontn.style.display = "block"; 
+    msg.innerText = `Player ${winner} wins!`;
 };
 
-// Reset the game
 const resetGame = () => {
     boxes.forEach((box) => {
-        box.innerText = ""; // Clear all box contents
+        box.innerText = ""; 
     });
-    turnO = true; // Reset the turn to player O
-    msgcontn.style.display = "none"; // Hide the winner message
-    msg.innerText = ""; // Clear the winner text
-    gameOver = false; // Reset the game status
+    turnO = true;
+    msgcontn.style.display = "none";
+    msg.innerText = ""; 
+    gameOver = false; 
 };
 
-// Add click listener to the reset button
 resetBtn.addEventListener("click", resetGame);
